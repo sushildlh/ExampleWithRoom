@@ -28,7 +28,7 @@ public class ResultData implements Parcelable {
     
     @NonNull
     @PrimaryKey()
-    @SerializedName("id")
+    @SerializedName(value = "id")
     @Expose
     private Integer id;
     

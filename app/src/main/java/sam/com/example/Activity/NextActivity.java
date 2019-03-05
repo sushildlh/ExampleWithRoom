@@ -29,16 +29,8 @@ public class NextActivity extends Activity {
         mEdit = findViewById(R.id.edit);
         
         Variable variable = getIntent().getParcelableExtra("data");
+        fillData(variable.getD1());
         
-        if (variable.getD1() != null) {
-            fillData(variable.getD1());
-        } else if (variable.getD2() != null) {
-            fillData(variable.getD2());
-        } else if (variable.getD3() != null) {
-            fillData(variable.getD3());
-        } else {
-            fillData(variable.getD4());
-        }
     }
     
     private void fillData(Dollar d1) {

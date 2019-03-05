@@ -57,7 +57,6 @@ public class MainActivity extends Activity implements DatabaseCallback {
     
     @Override
     protected void onDestroy() {
-        
         super.onDestroy();
     }
     
