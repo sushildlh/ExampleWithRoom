@@ -6,17 +6,26 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import androidx.room.Embedded;
+
 public class Variable implements Parcelable {
     
+    @Embedded
     @SerializedName("$1")
     @Expose
     public Dollar d1;
+    
+    @Embedded
     @SerializedName("$2")
     @Expose
     private Dollar d2;
+    
+    @Embedded
     @SerializedName("$3")
     @Expose
     private Dollar d3;
+    
+    @Embedded
     @SerializedName("$4")
     @Expose
     private Dollar d4;

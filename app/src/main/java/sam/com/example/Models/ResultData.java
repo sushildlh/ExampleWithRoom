@@ -9,20 +9,46 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+import io.reactivex.annotations.NonNull;
+
+@Entity(tableName = "my_table")
 public class ResultData implements Parcelable {
     
+    public ResultData(Integer id, String name, String tag, String color, List<Criterium> criteria) {
+        this.id = id;
+        this.name = name;
+        this.tag = tag;
+        this.color = color;
+        this.criteria = criteria;
+    }
+    
+    @NonNull
+    @PrimaryKey()
     @SerializedName("id")
     @Expose
     private Integer id;
+    
+    @ColumnInfo(name = "name")
     @SerializedName("name")
     @Expose
     private String name;
+    
+    @ColumnInfo(name = "tag")
     @SerializedName("tag")
     @Expose
     private String tag;
+    
+    @ColumnInfo(name = "color")
     @SerializedName("color")
     @Expose
     private String color;
+    
+    @ColumnInfo(name = "ListData")
+    @TypeConverters(DataTypeConverter.class)
     @SerializedName("criteria")
     @Expose
     private List<Criterium> criteria = new ArrayList<>();

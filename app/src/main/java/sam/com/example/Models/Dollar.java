@@ -9,27 +9,43 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.room.ColumnInfo;
+import androidx.room.TypeConverters;
+
 public class Dollar implements Parcelable {
     
+    @ColumnInfo(name = "type")
     @SerializedName("type")
     @Expose
     private String type;
+    
+    @ColumnInfo(name = "study_type")
     @SerializedName("study_type")
     @Expose
     private String studyType;
+    
+    @ColumnInfo(name = "parameter_name")
     @SerializedName("parameter_name")
     @Expose
     private String parameterName;
+    
+    @ColumnInfo(name = "min_value")
     @SerializedName("min_value")
     @Expose
     private Integer minValue;
+    
+    @ColumnInfo(name = "max_value")
     @SerializedName("max_value")
     @Expose
     private Integer maxValue;
+    
+    @ColumnInfo(name = "default_value")
     @SerializedName("default_value")
     @Expose
     private Integer defaultValue;
     
+    @ColumnInfo(name = "values")
+    @TypeConverters(DoubleTypeConverter.class)
     @SerializedName("values")
     @Expose
     private List<Double> values = new ArrayList<>();

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 import sam.com.example.Activity.DetailsActivity;
@@ -19,9 +19,9 @@ import sam.com.example.R;
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     
     private Context context;
-    private ArrayList<ResultData> resultData;
+    private List<ResultData> resultData;
     
-    public ListAdapter(Context context, ArrayList<ResultData> resultData) {
+    public ListAdapter(Context context, List<ResultData> resultData) {
         this.context = context;
         this.resultData = resultData;
     }

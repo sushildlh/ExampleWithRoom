@@ -6,14 +6,22 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
+
 public class Criterium implements Parcelable {
     
+    @ColumnInfo(name = "type")
     @SerializedName("type")
     @Expose
     private String type;
+    
+    @ColumnInfo(name = "text")
     @SerializedName("text")
     @Expose
     private String text;
+    
+    @Embedded
     @SerializedName("variable")
     @Expose
     private Variable variable;
