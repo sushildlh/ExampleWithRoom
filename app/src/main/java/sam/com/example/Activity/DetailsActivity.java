@@ -8,14 +8,23 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import sam.com.example.Models.Dollar;
 import sam.com.example.Models.ResultData;
+import sam.com.example.Models.Variable;
 import sam.com.example.R;
 
 public class DetailsActivity extends Activity {
@@ -62,8 +71,25 @@ public class DetailsActivity extends Activity {
                 public void onClick(View textView) {
                     int position = 0;
                     for (String s : datas) {
-                        if (s.contains(name))
-                            startActivity(new Intent(DetailsActivity.this, NextActivity.class).putExtra("data", data.getCriteria().get(position).getVariable()));
+                        if (s.contains(name)) {
+                            Variable variable = data.getCriteria().get(position).getVariable();
+                            Gson gson = new Gson();
+                            String json = gson.toJson(variable);
+                            Dollar dollar = null;
+                            Log.d("sushildlh", json);
+                            try {
+                                JSONObject jsonResult = new JSONObject(json);
+                                JSONObject val = jsonResult.getJSONObject(name);
+                                String data = val.toString();
+                                dollar = gson.fromJson(data, Dollar.class);
+                                Log.d("sushildlh", data);
+                                startActivity(new Intent(DetailsActivity.this, NextActivity.class).putExtra("data", dollar));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(DetailsActivity.this, "Data not Available", Toast.LENGTH_SHORT).show();
+                            }
+                            
+                        }
                         position++;
                     }
                 }

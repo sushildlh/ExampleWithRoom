@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import sam.com.example.Adapter.TextListAdapter;
 import sam.com.example.Models.Dollar;
-import sam.com.example.Models.Variable;
 import sam.com.example.R;
 
 public class NextActivity extends Activity {
@@ -28,8 +27,8 @@ public class NextActivity extends Activity {
         mList = findViewById(R.id.list);
         mEdit = findViewById(R.id.edit);
         
-        Variable variable = getIntent().getParcelableExtra("data");
-        fillData(variable.getD1());
+        Dollar variable = getIntent().getParcelableExtra("data");
+        fillData(variable);
         
     }
     
